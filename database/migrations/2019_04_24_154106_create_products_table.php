@@ -16,8 +16,8 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->bigInteger('prise');
-            $table->boolean('hidden');
+            $table->bigInteger('prise')->nullable();
+            $table->boolean('hidden')->default(false)	;
             $table->timestamps();
         });
     }
