@@ -17,7 +17,7 @@ class CreateProductsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->bigInteger('prise')->nullable();
-            $table->boolean('hidden')->default(false)	;
+            $table->boolean('hidden')->default(false);
             $table->timestamps();
         });
     }
