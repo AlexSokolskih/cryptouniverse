@@ -24,13 +24,16 @@ Route::group(['middleware' => 'auth'], function () {
 
 
     Route::group(['prefix' => 'admin'], function () {
-        Route::get('/product', function ()    {
-            return view('admin.product');
-        });
+        Route::get('/product', 'ProductController@adminIndex' )->name('adminproducts');
         Route::get('newproduct', function ()    {
             return view('admin.newproduct');
         })->name('newproduct');
         Route::post('newproduct', 'ProductController@store')->name('newproduct');
+
+
+        Route::get('deleteproduct/{product}', 'ProductController@destroy')->name('deleteproduct');
+        Route::get('/editproduct/{product}', 'ProductController@edit')->name('editproduct');
+        Route::post('/editproduct/{product}', 'ProductController@update')->name('updateproduct');
     });
 
 

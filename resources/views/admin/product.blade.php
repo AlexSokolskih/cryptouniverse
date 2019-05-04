@@ -19,27 +19,15 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <th scope="row">товар1</th>
-                            <td>10000</td>
-                            <td>видно</td>
-                            <td><a href="/">удалить</a></td>
-                            <td><a href="/">редактировать</a></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">йцву выас вввыаваыаыва</th>
-                            <td>10000</td>
-                            <td>невидно</td>
-                            <td><a href="/">удалить</a></td>
-                            <td><a href="/">редактировать</a></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">йф а</th>
-                            <td>10000</td>
-                            <td>видно</td>
-                            <td><a href="/">удалить</a></td>
-                            <td><a href="/">редактировать</a></td>
-                        </tr>
+                        @foreach($products  as $index=>$product)
+                            <tr>
+                                <th scope="row">{{ $product->name }}</th>
+                                <td>{{ $product->price }}</td>
+                                <td>{{ $product->hidden }}</td>
+                                <td><a href="{{ route('deleteproduct', $product) }}">удалить</a></td>
+                                <td><a href="{{ route('editproduct', $product) }}">редактировать</a></td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
 
