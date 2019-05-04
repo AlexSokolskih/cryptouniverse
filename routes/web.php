@@ -20,11 +20,17 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function () {
+    Route::get('/products',  'ProductController@index');
+
+
     Route::group(['prefix' => 'admin'], function () {
         Route::get('/product', function ()    {
             return view('admin.product');
-            // Использует посредника Auth
         });
+        Route::get('newproduct', function ()    {
+            return view('admin.newproduct');
+        })->name('newproduct');
+        Route::post('newproduct', 'ProductController@store')->name('newproduct');
     });
 
 
