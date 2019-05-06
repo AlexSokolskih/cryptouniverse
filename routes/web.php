@@ -20,10 +20,12 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/products',  'ProductController@index');
+    Route::get('/products',  'ProductController@index')->name('products');
+    Route::get('/bid/{product}', 'BidController@create')->name('bid');
+    Route::post('/bid', 'BidController@store')->name('savebid');
 
 
-    Route::group(['prefix' => 'admin'], function () {
+    Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
         Route::get('/product', 'ProductController@adminIndex' )->name('adminproducts');
         Route::get('newproduct', function ()    {
             return view('admin.newproduct');
@@ -34,6 +36,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('deleteproduct/{product}', 'ProductController@destroy')->name('deleteproduct');
         Route::get('/editproduct/{product}', 'ProductController@edit')->name('editproduct');
         Route::post('/editproduct/{product}', 'ProductController@update')->name('updateproduct');
+
+        Route::get('/bids', 'BidController@index')->name('bids');
+
     });
 
 

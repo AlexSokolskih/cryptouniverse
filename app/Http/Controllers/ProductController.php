@@ -8,9 +8,10 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     public function index(){
-        $data["products"] = Product::all()->map(function ($item, $key) {
-            $item->hidden = ($item->hidden == 0) ? 'видно' : "невидно" ;
-          return $item;
+        $data["products"] = Product::all()->reject(function ($item, $key) {
+            if ( ($item->hidden == 1) ) {
+                return true;
+            }
         });
 
         return view('product.product', $data);
@@ -58,7 +59,6 @@ class ProductController extends Controller
 
     public function update(Product $product, Request $request)
     {
-
         $validatedData = $request->validate([
             'name' => 'required|max:200|alpha_dash',
             'price' => 'required|integer',

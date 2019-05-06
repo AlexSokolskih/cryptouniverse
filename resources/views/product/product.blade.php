@@ -12,7 +12,7 @@
                         <tr>
                             <th scope="col">Название</th>
                             <th scope="col">Цена</th>
-                            <th scope="col">Видимость</th>
+                            <th scope="col"></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -20,7 +20,7 @@
                         <tr>
                             <th scope="row">{{ $product->name }}</th>
                             <td>{{ $product->price }}</td>
-                            <td>{{ $product->hidden }}</td>
+                            <td><a href="{{ route('bid', $product->id) }}">Отправить заявку</a></td>
                         </tr>
                         @endforeach
                         </tbody>
