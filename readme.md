@@ -1,3 +1,15 @@
+Приложение было написанно для: <br>
+ Laravel 5.8 <br>
+PHP 7.2.17 <br>
+MySQL 5.7.26 (Innodb)<br>
+
+Установка стандартная, если через git то клонируем, делаем 
+composer update, выполняем миграции и должно заработать.
+<br>
+<br>
+Админу надо ручками поставить is_admin = 1 в базе.
+
+
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p align="center">
